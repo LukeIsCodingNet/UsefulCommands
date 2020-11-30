@@ -1,0 +1,16 @@
+main: net.lukeiscoding.spigot.usefulcommands.UsefulCommands
+name: UsefulCommands
+version: 0.1.0
+author: LukeIsCoding
+
+commands:
+  clearchat:
+    description: Clears the chat if someone said something bad or self promotion.
+    permission: usefulcommands.clearchat
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    defualt: op
+  testgui:
+    description: Opens a test gui
+    permission: usefulcommands.testgui
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
