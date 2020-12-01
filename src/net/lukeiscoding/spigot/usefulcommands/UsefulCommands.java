@@ -1,10 +1,14 @@
 package net.lukeiscoding.spigot.usefulcommands;
 
 import net.lukeiscoding.spigot.usefulcommands.commands.CommandClearChat;
+import net.lukeiscoding.spigot.usefulcommands.commands.CommandDestroyItems;
 import net.lukeiscoding.spigot.usefulcommands.commands.CommandTestGUI;
+import net.lukeiscoding.spigot.usefulcommands.commands.CommandUsefulCommands;
 import net.lukeiscoding.spigot.usefulcommands.events.MOTDMessageListener;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class UsefulCommands extends JavaPlugin {
@@ -23,11 +27,11 @@ public class UsefulCommands extends JavaPlugin {
         // log a message using the Bukkit API built in logger to say that this plugin has been enabled
         this.getServer().getLogger().severe(ChatColor.GREEN + "UsefulCommands has been enabled!");
 
-        // register commands
-        registerCommands();
-
         // register events
         registerEvents();
+
+        // register commands
+        registerCommands();
     }
 
     @Override
@@ -42,10 +46,14 @@ public class UsefulCommands extends JavaPlugin {
     private void registerCommands() {
         this.getCommand("clearchat").setExecutor(new CommandClearChat());
         this.getCommand("testgui").setExecutor(new CommandTestGUI());
+        this.getCommand("usefulcommands").setExecutor(new CommandUsefulCommands());
+        this.getCommand("destoryitems").setExecutor(new CommandDestroyItems());
     }
 
+    // TODO: Fix events not registering
     private void registerEvents() {
-        this.getServer().getPluginManager().registerEvents(new MOTDMessageListener(), this);
+        final PluginManager pm = Bukkit.getServer().getPluginManager();
+        pm.registerEvents(new MOTDMessageListener(), this);
     }
 
     private void loadConfigManager() {
