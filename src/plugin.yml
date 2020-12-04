@@ -24,3 +24,17 @@ commands:
     permission: usefulcommands.destroyitems
     permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
     default: op
+  crafting:
+    description: Opens a crafting table / workbench
+    permission: usefulcommands.crafting
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
+  fly:
+    description: Turns flight mode on or off
+    permission: usefulcommands.fly
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
+  smelt:
+    description: Opens a furnace
+    permission: usefulcommands.smelt
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
