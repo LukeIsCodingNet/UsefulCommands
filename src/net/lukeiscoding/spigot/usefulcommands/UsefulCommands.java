@@ -1,9 +1,6 @@
 package net.lukeiscoding.spigot.usefulcommands;
 
-import net.lukeiscoding.spigot.usefulcommands.commands.CommandClearChat;
-import net.lukeiscoding.spigot.usefulcommands.commands.CommandDestroyItems;
-import net.lukeiscoding.spigot.usefulcommands.commands.CommandTestGUI;
-import net.lukeiscoding.spigot.usefulcommands.commands.CommandUsefulCommands;
+import net.lukeiscoding.spigot.usefulcommands.commands.*;
 import net.lukeiscoding.spigot.usefulcommands.events.MOTDMessageListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -48,6 +45,9 @@ public class UsefulCommands extends JavaPlugin {
         this.getCommand("testgui").setExecutor(new CommandTestGUI());
         this.getCommand("usefulcommands").setExecutor(new CommandUsefulCommands());
         this.getCommand("destoryitems").setExecutor(new CommandDestroyItems());
+        this.getCommand("crafting").setExecutor(new CommandCrafting());
+        this.getCommand("fly").setExecutor(new CommandFly());
+        this.getCommand("smelt").setExecutor(new CommandSmelt());
     }
 
     // TODO: Fix events not registering
@@ -67,5 +67,8 @@ public class UsefulCommands extends JavaPlugin {
 
     private void setConfigDefaults() {
         configManager.getMessagesConfig().addDefault("player-join-message", "&bWelcome &a%PLAYER% to the server!");
+        configManager.getMessagesConfig().addDefault("crafting-table-command-message", "&bCrafting");
+        configManager.getMessagesConfig().addDefault("furnace-command-message", "&bSmelting...");
+        configManager.getMessagesConfig().addDefault("furnace-gui-title", "'Furnace'");
     }
 }
