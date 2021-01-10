@@ -1,46 +1,30 @@
 package net.lukeiscoding.spigot.usefulcommands.commands;
 
-import org.bukkit.Bukkit;
+import net.lukeiscoding.spigot.usefulcommands.ConfigManager;
+import net.lukeiscoding.spigot.usefulcommands.UsefulCommands;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Arrays;
 
 public class CommandUsefulCommands implements CommandExecutor {
 
+    private static final UsefulCommands plugin = UsefulCommands.getPlugin(UsefulCommands.class);
+    private final ConfigManager configManager = new ConfigManager();
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        // cast the Player to the CommandSender
-        Player p = (Player) sender;
-
-        // create the inventory gui
-        final Inventory inventory = Bukkit.createInventory(null, InventoryType.CHEST, "Admin Panel");
-
-        // create the item stack with the item
-        final ItemStack clearChatButton = new ItemStack(Material.BARRIER, 1);
-        // get the item meta from the clear chat button
-        final ItemMeta meta = clearChatButton.getItemMeta();
-
-        // set the clear chat button item lore
-        meta.setLore(Arrays.asList(ChatColor.AQUA + "Clear Chat\n", ChatColor.GREEN + "Preforms the clear chat command."));
-
-        // add the items to the gui
-        inventory.setItem(0, clearChatButton);
-
+        // check if the sender has permission
         if (sender.hasPermission("usefulcommands.admin")) {
             if (cmd.getName().equalsIgnoreCase("usefulcommands")) {
-                // check to see if we do not have any command arguments
                 if (args.length == 0) {
-                    // if we do not have any arguments than show the inventory admin gui
-                    p.openInventory(inventory);
+                    sender.sendMessage(ChatColor.AQUA + "UsefulCommands admin command. For help see /help usefulcommands.");
+                }
+
+                if (args[1].equalsIgnoreCase("reload")) {
+                    plugin.saveConfig();
+                    configManager.reloadConfigs();
+                    sender.sendMessage(ChatColor.AQUA + "All configs have been reloaded!");
                 }
             }
         }
