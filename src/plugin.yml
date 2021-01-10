@@ -38,3 +38,14 @@ commands:
     description: Opens a furnace
     permission: usefulcommands.smelt
     permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
+  nick:
+    description: Sets your own nickname or another player's nicknamne.
+    permission: usefulcommands.nick
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
+  destroy:
+    description: Opens a gui that players can place items to and when the player closes the gui the items get destroyed
+    permission: usefulcommands.destroy
+    permission-message: I am sorry but you do not have permission to use this command, please contact a server admin if you think this is an error.
+    default: op
